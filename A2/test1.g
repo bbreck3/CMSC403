@@ -14,24 +14,36 @@ grammar test1;
 		Debugging: Input should be read from system.in using a scanner
 		Currently: Doesnt work
 	*/
-	/*File file = new File(test.java);
-	Scanner scan = new Scanner(System.in);
-	String line;
+	//File file = new File(test.java);
+	String token = "";
 	String parse(String str){
+	Scanner scan = new Scanner(str);
+	String line=scan.next();
+	if(line.charAt(0)=='#'){
 
-	while(scan.hasNext()){
-		String  test = scan.next();
-		if(test=="#"){
-		line = scan.nextLine();
-		System.out.println(line);
+		String next = line.substring(10,12);
+		switch(next){
+		case "MA": token="MAP";
+					return token;
+				
+		case "FI": token="FILTER";
+					return token;
+				
+		case "FO": token="FOLD";
+					return token;
+					
 		}
-	} return line;  */
+		
+		return next;
+	} else return "Invalid Input";
+		
+	}
 	/**
 
 		Currently works, but is not reading in the input correctly...should be from scanner, not using a method
 
 	*/
-	String parse(String str){
+	/*String parse(String str){
 	if(str.charAt(0)=='#'){
 		String temp = eval(str);
 		return temp;
@@ -39,7 +51,7 @@ grammar test1;
 		str="Invalid";
 	}
 	return str;
-	}
+	}*/
 
 	String eval(String str){
 	//for debugging
