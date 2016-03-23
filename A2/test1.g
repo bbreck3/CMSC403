@@ -15,29 +15,76 @@ grammar test1;
 		Currently: Doesnt work
 	*/
 	//File file = new File(test.java);
-	String token = "";
+	//String trgToken ="";
+	String token ="";
 	String parse(String str){
 	Scanner scan = new Scanner(str);
-	String line=scan.next();
-	if(line.charAt(0)=='#'){
+
+	String line=scan.nextLine();
+	if(line.contains("#")){
+		token = extract(line); //"Target-->" +line;
+		
+		
+	} else { token = line;}
+	return token;
+
+
+
+	/*for(int i=0; i<line.length(); i++){	
+		if(line.charAt(i)=='#'){
 
 		String next = line.substring(10,12);
 		switch(next){
 		case "MA": token="MAP";
-					return token;
+						Sytsem.out.println("Debug --> MAP");
+					break;
 				
 		case "FI": token="FILTER";
-					return token;
-				
+					Sytsem.out.println("Debug-->Filter");
+					break;
+
 		case "FO": token="FOLD";
-					return token;
+					Sytsem.out.println("Debug --> FOLD");
+					break;
+		default: return 
 					
 		}
-		
-		return next;
+			return token;	
 	} else return "Invalid Input";
+	}*/ 
+	
 		
 	}
+
+	String extract(String str){
+			System.out.println("Debug-->" + str);
+			for(int i=0; i<str.length()-1; i++){
+			//System.out.println(i);
+				if(str.charAt(i)=='#'){
+				int hashTagIdx= str.indexOf('#');
+				int equalIdx = str.indexOf('=');
+				System.out.println("Hash-->" + hashTagIdx + ", equal-->" + equalIdx);
+				String listName = str.substring(hashTagIdx+1, equalIdx);
+				System.out.println("Debug--> Listname: --> "+listName);
+				token = listName;
+						
+						/*switch(next){
+						case "MA": token="MAP";
+									return token;
+					
+						case "FI": token="FILTER";
+									return token;
+
+						case "FO": token="FOLD";
+									return token;
+						} */
+
+				} 	
+			}return token;
+	}
+
+
+
 	/**
 
 		Currently works, but is not reading in the input correctly...should be from scanner, not using a method
