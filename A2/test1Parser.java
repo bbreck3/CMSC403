@@ -90,13 +90,9 @@ public class test1Parser extends Parser {
 		Scanner scan = new Scanner(str);
 
 		String line=scan.nextLine();
-		if(line.contains("#") || !(line.indexOf("String") > 0))
-		{
-			System.out.println("Debug");
+		if(line.contains("#")){
 			token = extract(line); //"Target-->" +line;
-			//if(!(line.indexOf("String") > 0)){
-			//token = extract(line); //"Target-->" +line;
-			//}
+			
 		} else { token = line;}
 		return token;
 
@@ -106,21 +102,7 @@ public class test1Parser extends Parser {
 			if(line.charAt(i)=='#'){
 
 			String next = line.substring(10,12);
-			switch(next){
-			case "MA": token="MAP";
-							Sytsem.out.println("Debug --> MAP");
-						break;
-					
-			case "FI": token="FILTER";
-						Sytsem.out.println("Debug-->Filter");
-						break;
-
-			case "FO": token="FOLD";
-						Sytsem.out.println("Debug --> FOLD");
-						break;
-			default: return 
-						
-			}
+			
 				return token;	
 		} else return "Invalid Input";
 		}*/ 
@@ -129,34 +111,49 @@ public class test1Parser extends Parser {
 		}
 
 		String extract(String str){
-					//System.out.println("Debug-->" + str);
+					
 					int hashTagIdx= str.indexOf('#');
 					int equalIdx = str.indexOf('=');
 					int leftBrak = str.indexOf('[');
 					int rightBrak = str.indexOf(']');
 					int leftCurly = str.indexOf('{');
-					int rightCurly = str.indexOf('}');
+					int rightCurly = str.indexOf('}');  
 					int commaPos=0;
 					int commaCounter=0;
 					String trgToken="";
 					String arr[];
+					String function="";
+					
 				for(int i=0; i<str.length()-1; i++){
-				//System.out.println(i);
+				
 					if(str.charAt(i)=='#'){
 					
 					String contents = str.substring(leftBrak+1, rightBrak);
-					//System.out.println("Debug: contents::-->" + contents);
-					//System.out.println("Hash-->" + hashTagIdx + ", equal-->" + equalIdx);
 					String listName = str.substring(hashTagIdx+1, equalIdx);
-					token = listName;
+					String extractFunc=str.substring(equalIdx+1,leftBrak);
+					switch(extractFunc){
+						case "MAP": function="MAP";
+							
+						break;
+					
+						case "FILTER": function="FILTER";
+							
+						break;
+
+						case "FOLD": function="FOLD";
+							
+						break;
+						default: System.out.println("No Such Case");
+						
+					}
 					for(int j=0; j<contents.length(); j++){
-						//System.out.println(contents.charAt(j));
+						
 						if(contents.charAt(j)==','){
 							
 								commaCounter++;
 						}
 					}
-					//System.out.println("Debug--> " + commaCounter);
+					
 					arr = new String[commaCounter];
 					for(int j=0;j<contents.length();j++){
 							
@@ -164,23 +161,13 @@ public class test1Parser extends Parser {
 									trgToken+=contents.charAt(j);
 							} else{ arr[commaPos]=trgToken; commaPos++; trgToken="";}
 					}
+
+					System.out.println("List-->" + listName);
+					System.out.println("Function-->" + function);
+					System.out.println("Elems: (Below)");
 					for(int j=0; j<arr.length; j++){
 						System.out.println(arr[j] + "\n");
 					}
-					
-					
-							
-							/*switch(next){
-							case "MA": token="MAP";
-										return token;
-						
-							case "FI": token="FILTER";
-										return token;
-
-							case "FO": token="FOLD";
-										return token;
-							} */
-
 					} 	
 				}return token;
 		}
