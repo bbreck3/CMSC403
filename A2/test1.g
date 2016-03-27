@@ -21,10 +21,13 @@ grammar test1;
 	Scanner scan = new Scanner(str);
 
 	String line=scan.nextLine();
-	if(line.contains("#")){
+	if(line.contains("#") || !(line.indexOf("String") > 0))
+	{
+		System.out.println("Debug");
 		token = extract(line); //"Target-->" +line;
-		
-		
+		//if(!(line.indexOf("String") > 0)){
+		//token = extract(line); //"Target-->" +line;
+		//}
 	} else { token = line;}
 	return token;
 
@@ -57,16 +60,46 @@ grammar test1;
 	}
 
 	String extract(String str){
-			System.out.println("Debug-->" + str);
+				//System.out.println("Debug-->" + str);
+				int hashTagIdx= str.indexOf('#');
+				int equalIdx = str.indexOf('=');
+				int leftBrak = str.indexOf('[');
+				int rightBrak = str.indexOf(']');
+				int leftCurly = str.indexOf('{');
+				int rightCurly = str.indexOf('}');
+				int commaPos=0;
+				int commaCounter=0;
+				String trgToken="";
+				String arr[];
 			for(int i=0; i<str.length()-1; i++){
 			//System.out.println(i);
 				if(str.charAt(i)=='#'){
-				int hashTagIdx= str.indexOf('#');
-				int equalIdx = str.indexOf('=');
-				System.out.println("Hash-->" + hashTagIdx + ", equal-->" + equalIdx);
+				
+				String contents = str.substring(leftBrak+1, rightBrak);
+				//System.out.println("Debug: contents::-->" + contents);
+				//System.out.println("Hash-->" + hashTagIdx + ", equal-->" + equalIdx);
 				String listName = str.substring(hashTagIdx+1, equalIdx);
-				System.out.println("Debug--> Listname: --> "+listName);
 				token = listName;
+				for(int j=0; j<contents.length(); j++){
+					//System.out.println(contents.charAt(j));
+					if(contents.charAt(j)==','){
+						
+							commaCounter++;
+					}
+				}
+				//System.out.println("Debug--> " + commaCounter);
+				arr = new String[commaCounter];
+				for(int j=0;j<contents.length();j++){
+						
+						if(!(contents.charAt(j)==',')){
+								trgToken+=contents.charAt(j);
+						} else{ arr[commaPos]=trgToken; commaPos++; trgToken="";}
+				}
+				for(int j=0; j<arr.length; j++){
+					System.out.println(arr[j] + "\n");
+				}
+				
+				
 						
 						/*switch(next){
 						case "MA": token="MAP";
@@ -129,7 +162,4 @@ e returns [String v]
 STRING:  ~[\r\n]+;
 
 NEWLINE:'\r'? '\n' ; //Newline
-
-
-
-
+WS  :   (' '|'\t')+ {skip();} ; // take out / ignore whitespace
