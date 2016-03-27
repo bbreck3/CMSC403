@@ -21,9 +21,13 @@ grammar test1;
 	Scanner scan = new Scanner(str);
 
 	String line=scan.nextLine();
+	
 	if(line.contains("#")){
-		token = extract(line); //"Target-->" +line;
+
+		if(!(line.contains("\""))){
 		
+		token = extract(line); //"Target-->" +line;
+		}
 	} else { token = line;}
 	return token;
 
@@ -60,8 +64,11 @@ grammar test1;
 			
 				if(str.charAt(i)=='#'){
 				
+				
 				String contents = str.substring(leftBrak+1, rightBrak);
+				System.out.println("Debug--> contents");
 				String listName = str.substring(hashTagIdx+1, equalIdx);
+				System.out.println("Debug--> listName");
 				String extractFunc=str.substring(equalIdx+1,leftBrak);
 				String betweenCurly = str.substring(leftCurly+1, rightCurly);
 				switch(extractFunc){
@@ -164,7 +171,7 @@ grammar test1;
 
 prog: stat+;
 
-stat: e NEWLINE WS  {System.out.println($e.v);} 
+stat: e NEWLINE {System.out.println($e.v);} 
 ;
 
 e returns [String v]
@@ -178,4 +185,4 @@ e returns [String v]
 STRING:  ~[\r\n]+;
 
 NEWLINE:'\r'? '\n' ; //Newline
-WS  :   (' '|'\t')+ {skip();} ; // take out / ignore whitespace
+WS  :   (' '|'\t')+ {skip();} ;

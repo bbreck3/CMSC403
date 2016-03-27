@@ -90,9 +90,13 @@ public class test1Parser extends Parser {
 		Scanner scan = new Scanner(str);
 
 		String line=scan.nextLine();
+		
 		if(line.contains("#")){
-			token = extract(line); //"Target-->" +line;
+
+			if(!(line.contains("\""))){
 			
+			token = extract(line); //"Target-->" +line;
+			}
 		} else { token = line;}
 		return token;
 
@@ -129,8 +133,11 @@ public class test1Parser extends Parser {
 				
 					if(str.charAt(i)=='#'){
 					
+					
 					String contents = str.substring(leftBrak+1, rightBrak);
+					System.out.println("Debug--> contents");
 					String listName = str.substring(hashTagIdx+1, equalIdx);
+					System.out.println("Debug--> listName");
 					String extractFunc=str.substring(equalIdx+1,leftBrak);
 					String betweenCurly = str.substring(leftCurly+1, rightCurly);
 					switch(extractFunc){
@@ -295,7 +302,6 @@ public class test1Parser extends Parser {
 			return getRuleContext(EContext.class,0);
 		}
 		public TerminalNode NEWLINE() { return getToken(test1Parser.NEWLINE, 0); }
-		public TerminalNode WS() { return getToken(test1Parser.WS, 0); }
 		public StatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -320,8 +326,6 @@ public class test1Parser extends Parser {
 			((StatContext)_localctx).e = e();
 			setState(12);
 			match(NEWLINE);
-			setState(13);
-			match(WS);
 			System.out.println(((StatContext)_localctx).e.v);
 			}
 		}
@@ -360,7 +364,7 @@ public class test1Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
+			setState(15);
 			((EContext)_localctx).a = match(STRING);
 
 			 	String s = (((EContext)_localctx).a!=null?((EContext)_localctx).a.getText():null);
@@ -380,12 +384,12 @@ public class test1Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\5\26\4\2\t\2\4\3"+
-		"\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4"+
-		"\3\4\2\2\5\2\4\6\2\2\23\2\t\3\2\2\2\4\r\3\2\2\2\6\22\3\2\2\2\b\n\5\4\3"+
-		"\2\t\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16"+
-		"\5\6\4\2\16\17\7\4\2\2\17\20\7\5\2\2\20\21\b\3\1\2\21\5\3\2\2\2\22\23"+
-		"\7\3\2\2\23\24\b\4\1\2\24\7\3\2\2\2\3\13";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\5\25\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4"+
+		"\2\2\5\2\4\6\2\2\22\2\t\3\2\2\2\4\r\3\2\2\2\6\21\3\2\2\2\b\n\5\4\3\2\t"+
+		"\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6"+
+		"\4\2\16\17\7\4\2\2\17\20\b\3\1\2\20\5\3\2\2\2\21\22\7\3\2\2\22\23\b\4"+
+		"\1\2\23\7\3\2\2\2\3\13";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
