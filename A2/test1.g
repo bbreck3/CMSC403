@@ -9,13 +9,7 @@ grammar test1;
 	import java.util.*;
 }
 @parser::members{
-	/**
-
-		Debugging: Input should be read from system.in using a scanner
-		Currently: Doesnt work
-	*/
-	//File file = new File(test.java);
-	//String trgToken ="";
+	
 	String token ="";
 	String parse(String str){
 	Scanner scan = new Scanner(str);
@@ -23,24 +17,15 @@ grammar test1;
 	String line=scan.nextLine();
 	
 	if(line.contains("#")){
-
+		System.out.println("//" + line);
 		if(!(line.contains("\""))){
 		
 		token = extract(line); //"Target-->" +line;
+		//System.out.println("Token returned--> " + "[ " + token + " ]");
+		//System.out.println("Debug Line after token returned");
 		}
 	} else { token = line;}
 	return token;
-
-
-
-	/*for(int i=0; i<line.length(); i++){	
-		if(line.charAt(i)=='#'){
-
-		String next = line.substring(10,12);
-		
-			return token;	
-	} else return "Invalid Input";
-	}*/ 
 	
 		
 	}
@@ -58,6 +43,7 @@ grammar test1;
 				String trgToken="";
 				String arr[];
 				String function="";
+				String retTok="";
 
 				
 			for(int i=0; i<str.length()-1; i++){
@@ -66,9 +52,9 @@ grammar test1;
 				
 				
 				String contents = str.substring(leftBrak+1, rightBrak);
-				System.out.println("Debug--> contents");
+				//System.out.println("Debug--> contents");
 				String listName = str.substring(hashTagIdx+1, equalIdx);
-				System.out.println("Debug--> listName");
+				//System.out.println("Debug--> listName");
 				String extractFunc=str.substring(equalIdx+1,leftBrak);
 				String betweenCurly = str.substring(leftCurly+1, rightCurly);
 				switch(extractFunc){
@@ -102,69 +88,42 @@ grammar test1;
 						} else{ arr[commaPos]=trgToken; commaPos++; trgToken="";}
 				}
 
-				System.out.println("List-->" + listName);
-				System.out.println("Function-->" + function);
-				System.out.println("Between Curly-->" + betweenCurly);
-				System.out.println("Elems: (By Case Below)");
+				//System.out.println("List-->" + listName);
+				//System.out.println("Function-->" + function);
+				//System.out.println("Between Curly-->" + betweenCurly);
+				//System.out.println("Elems: (By Case Below)");
 				
 					if(function=="MAP"){
-					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
-					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
-					System.out.println("{ \n");
-					System.out.println(arr[3] + " " + arr[4]);
-					System.out.println(betweenCurly);
-					System.out.println("outListInternal.add(" +arr[4] + ")" );
-					System.out.println("} \n");
-					System.out.println(listName + "=outListInternal");
+					retTok+="List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();\n";
+					retTok+="for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )\n";
+					retTok+="{ \n";
+					retTok+=arr[3] + " " + arr[4] +";\n";
+					retTok+=betweenCurly +"\n";
+					retTok+="outListInternal.add(" +arr[4] + ");\n";
+					retTok+="} \n";
+					retTok+=listName + "=outListInternal;";
 
 
 					} else if(function=="FILTER"){
-					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
-					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
-					System.out.println("{ \n");
-					System.out.println("if(" + betweenCurly+")");
-					System.out.println("{ \n");
-					System.out.println("outListInternal.add(" +arr[2] + ");" );
-					System.out.println("} \n");
-					System.out.println(listName + "=outListInternal");
+					retTok+="List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();\n";
+					retTok+="for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )\n";
+					retTok+="{ \n";
+					retTok+="if(" + betweenCurly+")\n";
+					retTok+="{ \n";
+					retTok+="outListInternal.add(" +arr[2] + ");\n";
+					retTok+="} \n";
+					retTok+="} \n";
+					retTok+=listName + "=outListInternal;\n";
 
 					} else if(function=="FOLD"){
-					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
-					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
-					System.out.println("{ \n");
-					System.out.println(betweenCurly);
-					System.out.println("} \n");
+					retTok+="List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();\n";
+					retTok+="for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )\n";
+					retTok+="{ \n";
+					retTok+=betweenCurly+"\n";
+					retTok+="} \n";
 					}
 				} 	
-			}return token;
-	}
-
-
-
-	/**
-
-		Currently works, but is not reading in the input correctly...should be from scanner, not using a method
-
-	*/
-	/*String parse(String str){
-	if(str.charAt(0)=='#'){
-		String temp = eval(str);
-		return temp;
-	} else {
-		str="Invalid";
-	}
-	return str;
-	}*/
-
-	String eval(String str){
-	//for debugging
-	char trash = str.charAt(0);
-	System.out.println("Trash: --> " +trash);
-	String rest = str.substring(1,str.length());
-	System.out.println("Debug -->" +rest);
-	//end debugging
-	return  rest;
-
+			}return retTok;
 	}
 
 }
