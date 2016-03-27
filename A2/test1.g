@@ -54,6 +54,7 @@ grammar test1;
 				String trgToken="";
 				String arr[];
 				String function="";
+
 				
 			for(int i=0; i<str.length()-1; i++){
 			
@@ -62,6 +63,7 @@ grammar test1;
 				String contents = str.substring(leftBrak+1, rightBrak);
 				String listName = str.substring(hashTagIdx+1, equalIdx);
 				String extractFunc=str.substring(equalIdx+1,leftBrak);
+				String betweenCurly = str.substring(lefttCurly+1, rightCurly);
 				switch(extractFunc){
 					case "MAP": function="MAP";
 						
@@ -95,6 +97,7 @@ grammar test1;
 
 				System.out.println("List-->" + listName);
 				System.out.println("Function-->" + function);
+				System.out.println("Between Curly-->" + betweenCurly);
 				System.out.println("Elems: (Below)");
 				for(int j=0; j<arr.length; j++){
 					System.out.println(arr[j] + "\n");
