@@ -63,7 +63,7 @@ grammar test1;
 				String contents = str.substring(leftBrak+1, rightBrak);
 				String listName = str.substring(hashTagIdx+1, equalIdx);
 				String extractFunc=str.substring(equalIdx+1,leftBrak);
-				String betweenCurly = str.substring(lefttCurly+1, rightCurly);
+				String betweenCurly = str.substring(leftCurly+1, rightCurly);
 				switch(extractFunc){
 					case "MAP": function="MAP";
 						
@@ -98,10 +98,36 @@ grammar test1;
 				System.out.println("List-->" + listName);
 				System.out.println("Function-->" + function);
 				System.out.println("Between Curly-->" + betweenCurly);
-				System.out.println("Elems: (Below)");
-				for(int j=0; j<arr.length; j++){
-					System.out.println(arr[j] + "\n");
-				}
+				System.out.println("Elems: (By Case Below)");
+				
+					if(function=="MAP"){
+					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+					System.out.println("{ \n");
+					System.out.println(arr[3] + " " + arr[4]);
+					System.out.println(betweenCurly);
+					System.out.println("outListInternal.add(" +arr[4] + ")" );
+					System.out.println("} \n");
+					System.out.println(listName + "=outListInternal");
+
+
+					} else if(function=="FILTER"){
+					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+					System.out.println("{ \n");
+					System.out.println("if(" + betweenCurly+")");
+					System.out.println("{ \n");
+					System.out.println("outListInternal.add(" +arr[2] + ");" );
+					System.out.println("} \n");
+					System.out.println(listName + "=outListInternal");
+
+					} else if(function=="FOLD"){
+					System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+					System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+					System.out.println("{ \n");
+					System.out.println(betweenCurly);
+					System.out.println("} \n");
+					}
 				} 	
 			}return token;
 	}
@@ -138,7 +164,7 @@ grammar test1;
 
 prog: stat+;
 
-stat: e NEWLINE  {System.out.println($e.v);} 
+stat: e NEWLINE WS  {System.out.println($e.v);} 
 ;
 
 e returns [String v]

@@ -123,6 +123,7 @@ public class test1Parser extends Parser {
 					String trgToken="";
 					String arr[];
 					String function="";
+
 					
 				for(int i=0; i<str.length()-1; i++){
 				
@@ -131,6 +132,7 @@ public class test1Parser extends Parser {
 					String contents = str.substring(leftBrak+1, rightBrak);
 					String listName = str.substring(hashTagIdx+1, equalIdx);
 					String extractFunc=str.substring(equalIdx+1,leftBrak);
+					String betweenCurly = str.substring(leftCurly+1, rightCurly);
 					switch(extractFunc){
 						case "MAP": function="MAP";
 							
@@ -164,10 +166,37 @@ public class test1Parser extends Parser {
 
 					System.out.println("List-->" + listName);
 					System.out.println("Function-->" + function);
-					System.out.println("Elems: (Below)");
-					for(int j=0; j<arr.length; j++){
-						System.out.println(arr[j] + "\n");
-					}
+					System.out.println("Between Curly-->" + betweenCurly);
+					System.out.println("Elems: (By Case Below)");
+					
+						if(function=="MAP"){
+						System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+						System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+						System.out.println("{ \n");
+						System.out.println(arr[3] + " " + arr[4]);
+						System.out.println(betweenCurly);
+						System.out.println("outListInternal.add(" +arr[4] + ")" );
+						System.out.println("} \n");
+						System.out.println(listName + "=outListInternal");
+
+
+						} else if(function=="FILTER"){
+						System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+						System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+						System.out.println("{ \n");
+						System.out.println("if(" + betweenCurly+")");
+						System.out.println("{ \n");
+						System.out.println("outListInternal.add(" +arr[2] + ");" );
+						System.out.println("} \n");
+						System.out.println(listName + "=outListInternal");
+
+						} else if(function=="FOLD"){
+						System.out.println("List<"+ arr[1] + "> outListInternal=new LinkedList<" + arr[1] +">();");
+						System.out.println("for( " + arr[1] + " " + arr[2] + " : " + arr[0] + " )");
+						System.out.println("{ \n");
+						System.out.println(betweenCurly);
+						System.out.println("} \n");
+						}
 					} 	
 				}return token;
 		}
@@ -266,6 +295,7 @@ public class test1Parser extends Parser {
 			return getRuleContext(EContext.class,0);
 		}
 		public TerminalNode NEWLINE() { return getToken(test1Parser.NEWLINE, 0); }
+		public TerminalNode WS() { return getToken(test1Parser.WS, 0); }
 		public StatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -290,6 +320,8 @@ public class test1Parser extends Parser {
 			((StatContext)_localctx).e = e();
 			setState(12);
 			match(NEWLINE);
+			setState(13);
+			match(WS);
 			System.out.println(((StatContext)_localctx).e.v);
 			}
 		}
@@ -328,7 +360,7 @@ public class test1Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(15);
+			setState(16);
 			((EContext)_localctx).a = match(STRING);
 
 			 	String s = (((EContext)_localctx).a!=null?((EContext)_localctx).a.getText():null);
@@ -348,12 +380,12 @@ public class test1Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\5\25\4\2\t\2\4\3"+
-		"\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4"+
-		"\2\2\5\2\4\6\2\2\22\2\t\3\2\2\2\4\r\3\2\2\2\6\21\3\2\2\2\b\n\5\4\3\2\t"+
-		"\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6"+
-		"\4\2\16\17\7\4\2\2\17\20\b\3\1\2\20\5\3\2\2\2\21\22\7\3\2\2\22\23\b\4"+
-		"\1\2\23\7\3\2\2\2\3\13";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\5\26\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4"+
+		"\3\4\2\2\5\2\4\6\2\2\23\2\t\3\2\2\2\4\r\3\2\2\2\6\22\3\2\2\2\b\n\5\4\3"+
+		"\2\t\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16"+
+		"\5\6\4\2\16\17\7\4\2\2\17\20\7\5\2\2\20\21\b\3\1\2\21\5\3\2\2\2\22\23"+
+		"\7\3\2\2\23\24\b\4\1\2\24\7\3\2\2\2\3\13";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
