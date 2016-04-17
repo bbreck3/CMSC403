@@ -24,6 +24,20 @@
 
 
 
+To run the program:
+1) --> antlr4 expr.g
+2) -->  javac *.java
+3) --> cat input.java | grun expr prog > output.java // (prog is the entry point to the grammer)
+
+antlr4 and grun are alias set according to:
+http://www.antlr.org/
+
+ export CLASSPATH=".:/usr/local/lib/antlr-4.5.2-complete.jar:$CLASSPATH"
+ alias antlr4='java -jar /usr/local/lib/antlr-4.5.2-complete.jar'
+ alias grun='java org.antlr.v4.gui.TestRig'
+
+
+
 */
 
 
