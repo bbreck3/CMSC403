@@ -6,7 +6,9 @@
 
 (define test '( 1 2 4 5))
 ;Sample data to build the BST
-(define sample '( 6 4 5 3 8 9 ))    
+(define sample '( 6 4 5 3 8 9 ))
+(define root (car sample))
+
 (define string "1 () 1 2")
 
 ;createBST
@@ -17,34 +19,39 @@
   (if (null? lst) "true" "false"))
 
 (define (insert v lst)
-  (if(isEmpty lst) (set! list (cons v lst)) "") ;(set! lst (append lst v))];(set! lst v)]
-       (if(> v (car list)) ("v > lst") "v < list"));(set! list v)] ;(set! list v) "")
+  (cond[(null? lst) (set! list (cons v lst))] ;(set! lst (append lst v))];(set! lst v)]
+       [(> v root) (set! list (cons lst v))]
+       [(< v root) (set! list  (cons v lst))]));(set! list v)] ;(set! list v) "")
        ;[(< v lst) ("v < lst")]));(cons list v)]))
          
 
 
 
 
-;(set! list (append list 9))
-;list
-;list
 
-;(isEmpty list)
 ;(insert (car sample) list)
-;(isEmpty list)
 ;(insert (car(cdr sample)) list)
-;(isEmpty list)
 ;(insert (car(cdr (cdr sample))) list)
+;(insert (car(cdr (cdr(cdr sample)))) list)
+
+
+;(insert (car(cdr (cdr(cdr sample)))) list)
+
+;(insert (car(cdr (cdr(cdr (cdr sample))))) list)
+;(insert (car(cdr (cdr(cdr (cdr (cdr sample)))))) list)
 
 ;list
 ;(display (car (cdr sample)))
 
 (for ([e (in-list sample)])
   ( insert e list)
-  ;(displayln e))
+  ;(displayln e)
   )
-
 list
+
+ 
+
+;list
 
 
 
