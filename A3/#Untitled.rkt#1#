@@ -57,11 +57,20 @@ list
 
 
 
-(define (searchBST v)
-(cons (list-ref list (list-index (curry equal? v) list)) found))
-      
+;(define (searchBST v)
+;(if(positive? (list-ref list (list-index (curry equal? v) list))) (cons (list-ref list (list-index (curry equal? v) list)) found) (display "not found" )))
 
-(searchBST 4 )
+
+;(define (searchBST v)
+; (if(member v list) (list-ref list (list-index (curry equal? v) list)) (display "value not found")))
+
+(define (searchBST v)
+ (if(member v list) (cons (list-ref list (list-index (curry equal? v) list)) found) (display "value not found")))
+
+;(cons (list-ref list (list-index (curry equal? v) list)) found)
+
+(searchBST 3)
+list
 
 
  
