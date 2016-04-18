@@ -1,0 +1,31 @@
+#lang racket
+
+;BST constructor: Creates an empty BST
+(define createBST '())
+(define list '())
+;Sample data to build the BST
+(define sample '( 6 4 5 3 8 9 ))    
+;createBST
+
+
+;is the BST empty
+(define (isEmpty lst)
+  (if (null? lst) "true" "false"))
+
+(define (insert v lst)
+  (if (isEmpty lst) (set! list v) ""))
+   ;(if(not (isEmpty lst)
+           ;and (> v lst)) (set! lst v))
+
+
+
+
+                  
+(insert (car sample) list)
+list
+
+
+
+(for ([e (in-list sample)])
+  (insert e))
+     
