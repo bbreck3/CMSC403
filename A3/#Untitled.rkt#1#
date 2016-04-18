@@ -1,4 +1,5 @@
 #lang racket
+(require srfi/1)
 
 ;BST constructor: Creates an empty BST
 (define createBST '())
@@ -7,9 +8,9 @@
 (define test '( 1 2 4 5))
 ;Sample data to build the BST
 (define sample '( 6 4 5 3 8 9 ))
+(define rSub '())
 (define root (car sample))
-
-(define string "1 () 1 2")
+(define found '())
 
 ;createBST
 
@@ -20,11 +21,11 @@
 
 (define (insert v lst)
   (cond[(null? lst) (set! list (cons v lst))] ;(set! lst (append lst v))];(set! lst v)]
-       [(> v root) (set! list (cons lst v))]
+       [(> v root) (set! rSub (cons v rSub))]
        [(< v root) (set! list  (cons v lst))]));(set! list v)] ;(set! list v) "")
-       ;[(< v lst) ("v < lst")]));(cons list v)]))
-         
 
+
+;(set! test (append test sample))
 
 
 
@@ -40,18 +41,31 @@
 ;(insert (car(cdr (cdr(cdr (cdr sample))))) list)
 ;(insert (car(cdr (cdr(cdr (cdr (cdr sample)))))) list)
 
+
+
 ;list
 ;(display (car (cdr sample)))
 
 (for ([e (in-list sample)])
   ( insert e list)
   ;(displayln e)
-  )
+  );
 list
+rSub
+(set! list (append list rSub))
+list
+
+
+
+(define (searchBST v)
+(cons (list-ref list (list-index (curry equal? v) list)) found))
+      
+
+(searchBST 4 )
+
 
  
 
-;list
 
 
 
