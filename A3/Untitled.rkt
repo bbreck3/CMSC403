@@ -1,7 +1,8 @@
 #lang racket
 
+
 ;BST constructor: Creates an empty BST
-(define createBST '())
+(define constructBST '())
 (define list '())
 
 (define test '( 1 2 4 5))
@@ -26,7 +27,7 @@
 (set! test (car sample))
  test
 
-                  
+                    
 ;(insert (car sample) list)
 ;list
 
