@@ -2,7 +2,7 @@
 (require srfi/1)
 
 ;BST constructor: Creates an empty BST
-(define createBST '())
+;(define createBST '())
 (define list '())
 
 (define test '( 1 2 4 5))
@@ -15,44 +15,51 @@
 (define mapList '())
 (define sortBST '())
 
+
+
 ;createBST
-
-
+(define createBST '())
+ 
 ;is the BST empty
 (define (isEmpty lst)
   (if (null? lst) "true" "false"))
 ;Add value to BST
-(define (addToBST v lst)
-  (cond[(null? lst) (set! list (cons v lst))] 
+(define (addToBST lst v k)
+  (cond[(null? lst) (set! createBST (cons v lst))] 
        [(> v root) (set! rSub (cons v rSub))]
-       [(< v root) (set! list  (cons v lst))]))
+       [(< v root) (set! createBST  (cons v lst))]))
 
 ;Search BST
-(define (searchBST BST v)
- (if(member v list) (set! found (cons (list-ref list (list-index (curry equal? v) list)) found)) (set! notInBST (cons v notInBST ))))
+(define (searchBST BST v e)
+(if(member v createBST) (displayln v) (displayln " ")));(set! found (cons (list-ref createBST (list-index (curry equal? v) createBST)) found)) (set! notInBST (cons v notInBST )))
+;(if(member v createBST) (displayln found) (displayln notInBST))) 
+
+
 
 ;MAP BST
 (define (mapBST BST )
-  (set!  mapList (append BST mapList)))
+  (set!  mapList (append BST mapList))
+  (displayln mapList))
 
 (define (foldBST BST)
-  (set! sortBST (sort BST <)))
+  (set! sortBST (sort BST <))
+        (displayln sortBST))
 
 
-
+(define (testRun)
 (for ([e (in-list sample)])
-  ( addToBST  e list)
+  ( addToBST createBST e e)
   ;(displayln e)
-  );
-(set! list (append list rSub))
+  )
+(set! createBST (append createBST rSub))
+  )
 
-(searchBST list 0)
-(mapBST list )
-(foldBST list)
-list
+;Show the contents of the list
+(define (show)
+  (set! createBST (append createBST rSub))
+  (displayln createBST))
 
-found
-sortBST
+
 
 
 
