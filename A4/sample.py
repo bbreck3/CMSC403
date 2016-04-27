@@ -49,16 +49,16 @@ class sample(object):
 
 
 
- # Sample of how to create objects, call methods and how to swap list		
-a = sample();
+ # Sample of how to create objects, list and calculate distance between the two list		
+#a = sample();
 
-b = sample();
+#b = sample();
 
-a._init_([1,2,3,4]);
-b._init_([11,22,33,44]);
+#a._init_([1,2,3,4]);
+#b._init_([11,22,33,44]);
 
-z=a.distance(b.getList(), a.getList());
-print(z);
+#z=a.distance(b.getList(), a.getList());
+#print(z);
 
 
 #all subclasses inherit sample and calculate the data from the list created in sample in a specific way
