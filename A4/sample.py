@@ -7,6 +7,7 @@
 # 2) The taxicab norm  is the summation of the absolute value of each ith term.
 # 3) MaxNorm is the absolute value of of each term in the vector set. There is no summation for this one. Simple the absolute value for each element
 class sample(object):
+
 	#list; #= [1,2,3,4];
 	def _init_(self,list):
 		self.list = list;
@@ -16,9 +17,19 @@ class sample(object):
 			return self.list;
 	def setList(self, list):
 		self.list = list;
- 	def distance(sample, list):
+ 	def distance(self,list1, list2):
  		#print(sample.list);
- 		print(list);
+ 		#print(list1);
+ 		#print(list2);
+ 		list3 = range(4);
+ 		for num in range(0,len(list1)):
+ 			#print(list1[num]-list2[num]);
+ 			list3[num] = list1[num]-list2[num];
+ 		return list3;
+
+
+
+ 			
  		
 
  # Sample of how to create objects, call methods and how to swap list		
@@ -36,6 +47,18 @@ class sample(object):
 #print(b.getList());
 
 
+
+
+ # Sample of how to create objects, call methods and how to swap list		
+a = sample();
+
+b = sample();
+
+a._init_([1,2,3,4]);
+b._init_([11,22,33,44]);
+
+z=a.distance(b.getList(), a.getList());
+print(z);
 
 
 #all subclasses inherit sample and calculate the data from the list created in sample in a specific way
