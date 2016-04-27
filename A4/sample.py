@@ -7,16 +7,33 @@
 # 2) The taxicab norm  is the summation of the absolute value of each ith term.
 # 3) MaxNorm is the absolute value of of each term in the vector set. There is no summation for this one. Simple the absolute value for each element
 class sample(object):
-	list;
+	#list; #= [1,2,3,4];
 	def _init_(self,list):
 		self.list = list;
-		#list = [1,2,3,4];
- 	def distance(list):
+		#print(list);
+		#print(self.list);
+	def getList(self):
+			return self.list;
+	def setList(self, list):
+		self.list = list;
+ 	def distance(sample, list):
+ 		#print(sample.list);
  		print(list);
+ 		
 
+ # Sample of how to create objects, call methods and how to swap list		
+#a = sample();
 
-#test = sample([1,2,3,4]);
-#print(list.distance());
+#b = sample();
+
+#._init_([1,2,3,4]);
+#b._init_([11,22,33,44]);
+#print(a.getList());
+#print(b.getList());
+
+#z=a.getList();
+#b.setList(z);
+#print(b.getList());
 
 
 
@@ -26,11 +43,11 @@ class sample(object):
 #inherits sample
 #Euclidean measure the EuclideanDistance of all the elements
 #EuclideanNorm is the the sqrt(summation(i^2))) or the square root of all summatino each ith term squared 
-class EuclideanSample(sample):
-	def _init_(self):
-		list = [1,2,3,4];
-		super(sample)._init_(list);
-		super(sample).distance(list);
+#class EuclideanSample(sample):
+#	def _init_(self):
+#		list = [1,2,3,4];
+#		super(sample)._init_(list);
+#		super(sample).distance(list);
 
 	#print(list);
 
