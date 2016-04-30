@@ -21,13 +21,14 @@ class sample(object):
  		#print(sample.list);
  		#print(list1);
  		#print(list2);
+ 		#print(self.list);
  		list3 = range(4);
  		for num in range(0,len(list1)):
  			#print(list1[num]-list2[num]);
  			list3[num] = list1[num]-list2[num];
- 		return list3;
-
-
+ 			return list3;
+ 		#print(list3);
+ 	
 
  			
  		
@@ -36,11 +37,17 @@ class sample(object):
 #a = sample();
 
 #b = sample();
-
-#._init_([1,2,3,4]);
+#list = [4,3,2,1];
+#a._init_([1,2,3,4]);
 #b._init_([11,22,33,44]);
 #print(a.getList());
 #print(b.getList());
+#x = a.getList();
+#z = b.getList();
+
+#(a.distance(x,list));
+
+
 
 #z=a.getList();
 #b.setList(z);
