@@ -6,11 +6,14 @@
 # 1) EuclideanNorm which is the the sqrt(summation(i^2))) or the square root of all summatino each ith term squared 
 # 2) The taxicab norm  is the summation of the absolute value of each ith term.
 # 3) MaxNorm is the absolute value of of each term in the vector set. There is no summation for this one. Simple the absolute value for each element
-class sample(object):
-
+class sample(list):
+	
 	#list; #= [1,2,3,4];
 	def _init_(self,list):
 		self.list = list;
+		#if i == list and j==None:
+			#self.list = list;
+		#else: print("none");
 		#print(list);
 		#print(self.list);
 	def getList(self):
@@ -35,7 +38,7 @@ class sample(object):
  		
 
  # Sample of how to create objects, call methods and how to swap list		
-a = sample();
+a = sample([1,2,3,4]);
 
 b = sample();
 list = [4,3,2,1];

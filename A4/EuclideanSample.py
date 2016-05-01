@@ -43,9 +43,9 @@ class EuclideanSample(sample):
 #initialize a sample list and a list from the Euclidean list
 #list = [1,2,3,4];
 a = sample();
-b= EuclideanSample();
-a._init_([5,6,7,8]);
-b._init_([1,2,3,4]);
+b= EuclideanSample([1,2,3,4]);
+#a._init_([5,6,7,8]);
+#b._init_([1,2,3,4]);
 
 
 
@@ -69,7 +69,7 @@ b._init_([1,2,3,4]);
 ##########################
 
 #print the results in one line
-print(b.distance(a,b.getList()));
+#print(b.distance(a,b.getList()));
 
 
 #print(z);
