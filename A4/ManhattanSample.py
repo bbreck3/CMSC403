@@ -9,14 +9,17 @@ class ManhattanSample(sample):
 		super(ManhattanSample,self)._init_(list);
 		
 		#Eucliudean Distance
-	def distance(self,list1,list2):
+	def distance(self,sample,list2):
+		list1=sample.getList();
 		list3=range(4);
 		for num in range(0,len(list2)):
  			
  			list3[num] = list1[num]-list2[num];
  		ED = abs(list3[0]+list3[1]+list3[2]+list3[3]);
+ 		#print(list1);
  		
 		return ED;
+		print(12);
 		#super(EuclideanSample,self).distance(list1,list2);
 
 		
@@ -41,9 +44,12 @@ class ManhattanSample(sample):
 ##################################
 
 #initialize a sample list and a list from the Euclidean list
-list = [1,2,3,4];
-a= ManhattanSample();
+#list = [1,2,3,4];
+a= sample();
+b= ManhattanSample();
+b._init_([1,2,3,4]);
 a._init_([5,6,7,8]);
+
 
 
 
@@ -67,7 +73,7 @@ a._init_([5,6,7,8]);
 ##########################
 
 #print the results in one line
-print(a.distance(a.getList(), list));
+print(b.distance(a, b.getList()));
 
 
 #print(z);

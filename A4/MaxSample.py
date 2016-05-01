@@ -9,7 +9,8 @@ class MaxSample(sample):
 		super(MaxSample,self)._init_(list);
 		
 		#Eucliudean Distance
-	def distance(self,list1,list2):
+	def distance(self,sample,list2):
+		list1 = sample.getList();
 		list3=range(4);
 		for num in range(0,len(list2)):
  			
@@ -62,9 +63,11 @@ class MaxSample(sample):
 ##################################
 
 #initialize a sample list and a list from the Euclidean list
-list = [1,2,3,4];
+#list = [1,2,3,4];
 a= MaxSample();
+b= sample();
 a._init_([5,7,9,11]);
+b._init_([1,2,3,4]);
 
 
 
@@ -88,7 +91,7 @@ a._init_([5,7,9,11]);
 ##########################
 
 #print the results in one line
-print(a.distance(a.getList(), list));
+print(a.distance(b,a.getList()));
 
 
 #print(z);

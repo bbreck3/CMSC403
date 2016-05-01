@@ -17,7 +17,8 @@ class sample(object):
 			return self.list;
 	def setList(self, list):
 		self.list = list;
- 	def distance(self,list1, list2):
+ 	def distance(self,sample, list2):
+ 		list1 = sample.getList();
  		#print(sample.list);
  		#print(list1);
  		#print(list2);
@@ -34,18 +35,17 @@ class sample(object):
  		
 
  # Sample of how to create objects, call methods and how to swap list		
-#a = sample();
+a = sample();
 
-#b = sample();
-#list = [4,3,2,1];
-#a._init_([1,2,3,4]);
-#b._init_([11,22,33,44]);
+b = sample();
+list = [4,3,2,1];
+a._init_([1,2,3,4]);
+b._init_([11,22,33,44]);
 #print(a.getList());
 #print(b.getList());
 #x = a.getList();
 #z = b.getList();
-
-#(a.distance(x,list));
+#print(a.distance(b,list));
 
 
 

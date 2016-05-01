@@ -8,7 +8,8 @@ class EuclideanSample(sample):
 	def _init_(self,list):
 		super(EuclideanSample,self)._init_(list);
 		
-	def distance(self,list1,list2):
+	def distance(self,sample,list2):
+		list1 = sample.getList();
 		list3=range(4);
 		for num in range(0,len(list2)):
  			
@@ -40,9 +41,11 @@ class EuclideanSample(sample):
 ##################################
 
 #initialize a sample list and a list from the Euclidean list
-list = [1,2,3,4];
-a= EuclideanSample();
+#list = [1,2,3,4];
+a = sample();
+b= EuclideanSample();
 a._init_([5,6,7,8]);
+b._init_([1,2,3,4]);
 
 
 
@@ -66,7 +69,7 @@ a._init_([5,6,7,8]);
 ##########################
 
 #print the results in one line
-print(a.distance(a.getList(), list));
+print(b.distance(a,b.getList()));
 
 
 #print(z);
