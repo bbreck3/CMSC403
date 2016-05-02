@@ -1,5 +1,7 @@
 from sample import sample;
 from EuclideanSample import EuclideanSample;
+from ManhattanSample import ManhattanSample;
+from MaxSample import MaxSample;
 class classifier(object):
 	global list9;
 	list9= [];
@@ -31,18 +33,18 @@ class classifier(object):
 			x= EuclideanSample.distance(sample, tempCMPList);
 			minList.append(x);
 			#print(x);
-		#	print(minList)
+			#print(minList)
 		y =min(minList);
 		#print(y);
 		w = minList.index(y);
 		#print(w);
-		i=list10.index(w);
-		#print(p);
-		f=list10[i];
+		i=list10[w];
+		#print(i);
+		#f=list10[i];
 		#print(f);
 		#print(minList.index(y));
 		#print(q);
-		return f;
+		return i;
 
 	def getList(self):
 		return self.list;
@@ -53,9 +55,39 @@ class classifier(object):
 
 
 
-cl=classifier()
-cl.addSample(sample([2, 2, 2],-1));
-cl.addSample(sample([0, 0, 0],1))
+####Sample 1: ####
 
-p=cl.predictLabel(EuclideanSample([-1, -1, -1]));
-print(p) #should print 1
+#cl=classifier()
+#cl.addSample(sample([2, 2, 2, 2, ],-1))
+#cl.addSample(sample([0, 0, 0,0],1))
+#cl.addSample(sample([0, 0, 0, 0],-1))
+#p=cl.predictLabel(EuclideanSample([-1, -1, -1, -1]))
+#print(p)  #should print 1
+
+
+
+
+##    Sample 2    #####
+#cl2=classifier()
+#cl2.addSample(sample([0, 0],["list","number",1]))
+#cl2.addSample(sample([2.1, 5.2],["list","number",2]))
+#p=cl2.predictLabel(EuclideanSample([0, 3.3]))
+#print(p)  #should print ['list', 'number', 2]
+#p=cl2.predictLabel(TaxicabSample([0, 3.3]))
+#print(p)  #should print ['list', 'number', 1]
+  
+
+
+
+### Sample 3: ####
+
+#cl3=classifier()
+#cl3.addSample(sample([3, 1, 1],"a"))
+#cl3.addSample(sample([2, 2, 2],"b"))
+#cl3.addSample(sample([4, 0, 0],"c"))
+#p=cl3.predictLabel(EuclideanSample([0, 0, 0]))
+#print(p)  #should print a
+#p=cl3.predictLabel(ManhattanSample([0, 0, 0]))
+#print(p)  #should print c
+#p=cl3.predictLabel(MaxSample([0, 0, 0]))
+#print(p)  #should print b
