@@ -11,10 +11,12 @@ class ManhattanSample(sample):
 		#Eucliudean Distance
 	def distance(sample,list2):
 		list1=sample.getList();
-		list3=range(4);
+		list3=range(4);#len(sample.getList()));
+		#print("qwerty");
+		#print(len(list2));
 		for num in range(0,len(list2)):
  			
- 			list3[num] = list1[num]-list2[num];
+ 			list3[num] = list2[num]-list1[num];
  		ED = abs(list3[0]+list3[1]+list3[2]+list3[3]);
  		#print(list1);
  		

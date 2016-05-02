@@ -11,11 +11,11 @@ class MaxSample(sample):
 		#Eucliudean Distance
 	def distance(sample,list2):
 		list1 = sample.getList();
-		list3=range(3);
+		list3=range(len(sample.getList()));
 		#print(list2);
  		#print(list1);
  		#print(list3);
-		for num in range(0,len(list2)):
+		for num in range(0,len(list3)):
  			list3[num] = abs(abs(list2[num])-abs(list1[num]));
 
  		#Max using the math max value built in to the math class
