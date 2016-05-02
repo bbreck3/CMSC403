@@ -38,12 +38,13 @@ class sample(list):
  		
 
  # Sample of how to create objects, call methods and how to swap list		
-a = sample([1,2,3,4]);
-
+a = sample();
+a._init_([1,2,3,4]);
+print(a.getList());
 b = sample();
 list = [4,3,2,1];
-a._init_([1,2,3,4]);
-b._init_([11,22,33,44]);
+#a._init_([1,2,3,4]);
+#b._init_([11,22,33,44]);
 #print(a.getList());
 #print(b.getList());
 #x = a.getList();
