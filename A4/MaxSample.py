@@ -5,19 +5,23 @@
 import math;
 from sample import sample;
 class MaxSample(sample):
-	def __init__(self,list,tag):
-		super(MaxSample,self).__init__(list,tag);
+	def __init__(self,list,*tag):
+		super(MaxSample,self).__init__(list,*tag);
 		
 		#Eucliudean Distance
-	def distance(self,sample,list2):
+	def distance(sample,list2):
 		list1 = sample.getList();
-		list3=range(4);
+		list3=range(3);
+		#print(list2);
+ 		#print(list1);
+ 		#print(list3);
 		for num in range(0,len(list2)):
- 			
- 			list3[num] = list1[num]-list2[num];
+ 			list3[num] = abs(abs(list2[num])-abs(list1[num]));
 
  		#Max using the math max value built in to the math class
+ 		#print(list3);
  		ED = max(list3);
+ 		#print(ED);
 
 
  		#Max Using an algorythm
@@ -38,7 +42,7 @@ class MaxSample(sample):
 
  		 #+list3[1]+list3[2]+list3[3]);
  		
-		return ED;
+		#return ED;
 		#super(EuclideanSample,self).distance(list1,list2);
 
 		

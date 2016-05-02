@@ -5,11 +5,11 @@
 import math;
 from sample import sample;
 class ManhattanSample(sample):
-	def __init__(self,list,tag):
-		super(ManhattanSample,self).__init__(list,tag);
+	def __init__(self,list,*tag):
+		super(ManhattanSample,self).__init__(list,*tag);
 		
 		#Eucliudean Distance
-	def distance(self,sample,list2):
+	def distance(sample,list2):
 		list1=sample.getList();
 		list3=range(4);
 		for num in range(0,len(list2)):
