@@ -5,16 +5,17 @@
 import math;
 from sample import sample;
 class EuclideanSample(sample):
-	def _init_(self,list):
-		super(EuclideanSample,self)._init_(list);
+	def __init__(self,list,*tag):
+		super(EuclideanSample,self).__init__(list,*tag);
 		
-	def distance(self,sample,list2):
+	def distance(sample,list2):
 		list1 = sample.getList();
 		list3=range(4);
 		for num in range(0,len(list2)):
  			
  			list3[num] = list1[num]-list2[num];
  		ED = math.sqrt(pow(list3[0],2)+pow(list3[1],2)+pow(list3[2],2)+pow(list3[3],2));
+ 		
  		
 		return ED;
 		
@@ -44,10 +45,12 @@ class EuclideanSample(sample):
 #list = [1,2,3,4];
 
 
-a = sample();
-b= EuclideanSample();
-a._init_([5,6,7,8]);
-b._init_([1,2,3,4]);
+# = EuclideanSample([5,6,7,8]);
+#b=EuclideanSample([1,2,3,4]);
+#print(b.distance(a,b.getList()));
+#b= EuclideanSample();
+#a._init_([5,6,7,8]);
+#b._init_([1,2,3,4]);
 
 #################################################################
 ##   Results:												   ##
@@ -94,7 +97,7 @@ b._init_([1,2,3,4]);
 ##########################
 
 #print the results in one line
-print(b.distance(a,b.getList()));
+#print(b.distance(a,b.getList()));
 
 
 #print(z);

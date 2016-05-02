@@ -5,8 +5,8 @@
 import math;
 from sample import sample;
 class ManhattanSample(sample):
-	def _init_(self,list):
-		super(ManhattanSample,self)._init_(list);
+	def __init__(self,list,tag):
+		super(ManhattanSample,self).__init__(list,tag);
 		
 		#Eucliudean Distance
 	def distance(self,sample,list2):
@@ -45,10 +45,10 @@ class ManhattanSample(sample):
 
 #initialize a sample list and a list from the Euclidean list
 #list = [1,2,3,4];
-a= sample();
-b= ManhattanSample();
-b._init_([1,2,3,4]);
-a._init_([5,6,7,8]);
+#a= sample();
+#b= ManhattanSample();
+#b._init_([1,2,3,4]);
+#a._init_([5,6,7,8]);
 
 
 
@@ -99,7 +99,7 @@ a._init_([5,6,7,8]);
 ##########################
 
 #print the results in one line
-print(b.distance(a, b.getList()));
+#print(b.distance(a, b.getList()));
 
 
 #print(z);

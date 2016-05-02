@@ -6,27 +6,64 @@
 # 1) EuclideanNorm which is the the sqrt(summation(i^2))) or the square root of all summatino each ith term squared 
 # 2) The taxicab norm  is the summation of the absolute value of each ith term.
 # 3) MaxNorm is the absolute value of of each term in the vector set. There is no summation for this one. Simple the absolute value for each element
+
 class sample(object):
 
+###$############
+#### Working ###
+################
+
 	#list; #= [1,2,3,4];
-	def _init_(self,list):
-		self.list = list;
+	#def _init_(self,list):
+		#self.list = list;
+	#def getList(self):
+			#return self.list;
+	#def setList(self, list):
+		#self.list = list;
+ 	#def distance(self,sample, list2):
+ 	#	list1 = sample.getList();
+ 	#	list3 = range(4);
+ 	#	for num in range(0,len(list1)):
+ 			
+ 	#		list3[num] = list1[num]-list2[num];
+ 	#		return list3;
+ 		
+ #########################
+ ## Testing ##############
+ #########################
+
+	def __init__(self,list, tag=None):
+			if tag is None:
+				self.list =list;
+			else: self.list =list; self.tag = tag; #print(tag);
 	def getList(self):
 			return self.list;
-	def setList(self, list):
+
+	def getTag(self,*tag):
+		return self.tag;
 		self.list = list;
  	def distance(self,sample, list2):
  		list1 = sample.getList();
  		list3 = range(4);
+
  		for num in range(0,len(list1)):
  			
  			list3[num] = list1[num]-list2[num];
+ 			list3.append(tag);
  			return list3;
- 		
  	
 
+
+
+
+
+
  			
- 		
+ #########################
+ ## Testing ##############
+ #########################
+
+#z = sample([1,2,3,4]);
 
  # Sample of how to create objects, call methods and how to swap list		
 #a = sample();
