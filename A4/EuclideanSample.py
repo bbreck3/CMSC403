@@ -17,7 +17,7 @@ class EuclideanSample(sample):
  		ED = math.sqrt(pow(list3[0],2)+pow(list3[1],2)+pow(list3[2],2)+pow(list3[3],2));
  		
 		return ED;
-		#super(EuclideanSample,self).distance(list1,list2);
+		
 
 		
 	def getList(self):
@@ -42,10 +42,35 @@ class EuclideanSample(sample):
 
 #initialize a sample list and a list from the Euclidean list
 #list = [1,2,3,4];
+
+
 a = sample();
 b= EuclideanSample();
 a._init_([5,6,7,8]);
 b._init_([1,2,3,4]);
+
+#################################################################
+##   Results:												   ##
+##	Expected:    											   ##
+##	(5-1) =4;												   ##
+##	(6-2) =4;												   ##
+##	(7-3) =4;												   ##
+##	(8-4) =4;												   ##
+##	----------												   ##	
+##	distance=4,4,4,4:= (sum_i=1 to 4) = 16					   ##
+##	EuclideanDistance: sqrt(x_1^2 + x_2^2 + x_3^2 + x_4^2):= 8 ##
+##	-----------------------------------------------------------##
+##	Actual:  												   ##
+##	(5-1) =4;												   ##
+##	(6-2) =4;												   ##
+##	(7-3) =4;												   ##
+##	(8-4) =4;												   ##
+##	----------												   ##
+##	distance=4,4,4,4:= (sum_i=1 to 4) = 64					   ##
+##	EuclideanDistance: sqrt(x_1^2 + x_2^2 + x_3^2 + x_4^2):= 8 ##
+##	---------------------------------------------------------- ##
+##  CHECK!													   ##
+#################################################################   
 
 
 

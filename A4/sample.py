@@ -11,36 +11,30 @@ class sample(object):
 	#list; #= [1,2,3,4];
 	def _init_(self,list):
 		self.list = list;
-		#print(list);
-		#print(self.list);
 	def getList(self):
 			return self.list;
 	def setList(self, list):
 		self.list = list;
  	def distance(self,sample, list2):
  		list1 = sample.getList();
- 		#print(sample.list);
- 		#print(list1);
- 		#print(list2);
- 		#print(self.list);
  		list3 = range(4);
  		for num in range(0,len(list1)):
- 			#print(list1[num]-list2[num]);
+ 			
  			list3[num] = list1[num]-list2[num];
  			return list3;
- 		#print(list3);
+ 		
  	
 
  			
  		
 
  # Sample of how to create objects, call methods and how to swap list		
-a = sample();
+#a = sample();
 
-b = sample();
-list = [4,3,2,1];
-a._init_([1,2,3,4]);
-b._init_([11,22,33,44]);
+#b = sample();
+#list = [4,3,2,1];
+#a._init_([1,2,3,4]);
+#b._init_([11,22,33,44]);
 #print(a.getList());
 #print(b.getList());
 #x = a.getList();
