@@ -159,13 +159,13 @@ class classifier(object):
 
 ### Sample 3: #### WORKS!!!
 
-cl3=classifier()
-cl3.addSample(sample([3, 1, 1],"a"))
-cl3.addSample(sample([2, 2, 2],"b"))
-cl3.addSample(sample([4, 0, 0],"c"))
-p=cl3.predictLabel(EuclideanSample([0, 0, 0]))
-print(p)  #should print a
-p=cl3.predictLabel(ManhattanSample([0, 0, 0]))
-print(p)  #should print c
-p=cl3.predictLabel(MaxSample([0, 0, 0]))
-print(p)  #should print b
+#cl3=classifier()
+#cl3.addSample(sample([3, 1, 1],"a"))
+#cl3.addSample(sample([2, 2, 2],"b"))
+#cl3.addSample(sample([4, 0, 0],"c"))
+#p=cl3.predictLabel(EuclideanSample([0, 0, 0]))
+#print(p)  #should print a
+#p=cl3.predictLabel(ManhattanSample([0, 0, 0,0]))
+#print(p)  #should print c
+#p=cl3.predictLabel(MaxSample([0, 0, 0,0]))
+#print(p)  #should print b

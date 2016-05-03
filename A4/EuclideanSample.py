@@ -10,13 +10,19 @@ class EuclideanSample(sample):
 		
 	def distance(sample,list2):
 		list1 = sample.getList();
-		list3=range(4);#len(sample.getList()));
+		list3=range(len(sample.getList()));
+		sumSquared=0;
 		for num in range(0,len(list2)):
- 			
  			list3[num] = list2[num]-list1[num];
- 		ED = math.sqrt(pow(list3[0],2)+pow(list3[1],2)+pow(list3[2],2)+pow(list3[3],2));
+		for num in range(0,len(list2)-1):
+ 			#ED = math.sqrt(pow(list3[0],2)+pow(list3[1],2)+pow(list3[2],2)+pow(list3[3],2));
+ 			sumSquared += pow(list3[num],2) + pow(list3[num+1],2);
  		
- 		
+
+
+
+
+ 		ED = math.sqrt(sumSquared);	
 		return ED;
 		
 
