@@ -34,6 +34,17 @@ class classifier(object):
 
 		list9.append(list1);
 		list10.append(tag);
+		if len(list9)>1:
+			base = list9[0];
+			baseLength =len(base);
+			for i in range(1,len(list9)):
+				temp = list9[i];
+				if len(temp) < len(base):
+						diff = len(base) - len(temp);
+						for j in range(0,diff-1):
+							temp.append(0);
+				list9[i]=temp;
+		#checkList(list1);
 		
 		
 		#print(list9);
@@ -126,6 +137,19 @@ class classifier(object):
 
 	def getList(self):
 		return self.list;
+	def checkList(self, list):
+		if len(list>1):
+			base = list[0];
+			baseLength =len(base);
+			for i in range(1,len(list)):
+				temp = list[i];
+				if len(temp) < len(base):
+						diff = len(base) - len(temp);
+						for j in range(0,diff-1):
+							temp.append(0);
+				list[i]=temp;
+		return temp;
+
 
 
 		
@@ -136,10 +160,10 @@ class classifier(object):
 ####Sample 1: #### Works if the list are the same;
 
 #cl=classifier()
-#cl.addSample(sample([2, 2, 2, 2],-1))
-#cl.addSample(sample([0, 0, 0,0],1))
+#cl.addSample(sample([2, 2, 2, 2, 2],-1))
+#cl.addSample(sample([0, 0, 0],1))
 #cl.addSample(sample([0, 0, 0, 0],-1))
-#p=cl.predictLabel(EuclideanSample([-1, -1, -1, -1]))
+#p=cl.predictLabel(EuclideanSample([-1, -1, -1, -1 ,-1]))
 #print(p)  #should print 1
 
 
@@ -147,25 +171,24 @@ class classifier(object):
 
 ##    Sample 2    ##### WORKS!!
 #cl2=classifier()
-#cl2.addSample(sample([0, 0],["list","number",1]))
+#cl2.addSample(sample([0, 0,0,0],["list","number",1]))
 #cl2.addSample(sample([2.1, 5.2],["list","number",2]))
-#p=cl2.predictLabel(EuclideanSample([0, 3.3]))
+#p=cl2.predictLabel(EuclideanSample([0, 3.3,0,0]))
 #print(p)  #should print ['list', 'number', 2]
-#p=cl2.predictLabel(ManhattanSample([0, 3.3]))
+#p=cl2.predictLabel(ManhattanSample([0, 3.3,0,0]))
 #print(p)  #should print ['list', 'number', 1]
-  
 
 
 
 ### Sample 3: #### WORKS!!!
 
-#cl3=classifier()
-#cl3.addSample(sample([3, 1, 1],"a"))
-#cl3.addSample(sample([2, 2, 2],"b"))
-#cl3.addSample(sample([4, 0, 0],"c"))
-#p=cl3.predictLabel(EuclideanSample([0, 0, 0]))
-#print(p)  #should print a
-#p=cl3.predictLabel(ManhattanSample([0, 0, 0,0]))
-#print(p)  #should print c
-#p=cl3.predictLabel(MaxSample([0, 0, 0,0]))
-#print(p)  #should print b
+cl3=classifier()
+cl3.addSample(sample([3, 1, 1,0,0],"a"))
+cl3.addSample(sample([2, 2, 2],"b"))
+cl3.addSample(sample([4, 0, 0],"c"))
+p=cl3.predictLabel(EuclideanSample([0, 0, 0,0,0]))
+print(p)  #should print a
+p=cl3.predictLabel(ManhattanSample([0, 0, 0,0,0]))
+print(p)  #should print c
+p=cl3.predictLabel(MaxSample([0, 0, 0,0,0]))
+print(p)  #should print b

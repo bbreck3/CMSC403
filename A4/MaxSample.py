@@ -12,6 +12,7 @@ class MaxSample(sample):
 	def distance(sample,list2):
 		list1 = sample.getList();
 		list3=range(len(sample.getList()));
+		list2.append(0);
 		#print(list2);
  		#print(list1);
  		#print(list3);
